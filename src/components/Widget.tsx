@@ -1,10 +1,24 @@
+import { useState } from 'react'
 import { ChatTeardropDots } from 'phosphor-react'
 
 export function Widget() {
+    // Criando um estado para controlar se o widget foi pressionado ou não. (Boolean)
+    const [isWidgetOpen, setIsWidgetOpen] = useState(false)
+
+    // Criando uma função para alterar a visibilidade do widget
+    function toogleWidgetVisibility(){
+        setIsWidgetOpen(!isWidgetOpen)
+    }
+
     return (
         <div className='absolute bottom-5 right-5'>
 
-            <button className='flex items-center bg-brand-500 rounded-full px-3 h-12 text-white group'>
+            {/* Criando uma condicional a apartir do estado para mostrar ou não algo */}
+            { isWidgetOpen ? <p>Abriu</p> : null}
+
+            <button 
+            onClick={toogleWidgetVisibility}
+            className='flex items-center bg-brand-500 rounded-full px-3 h-12 text-white group'>
                 <ChatTeardropDots className='w-6 h-6' />
 
                 {/* 
