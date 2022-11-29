@@ -1,14 +1,15 @@
-import { Camera } from "phosphor-react";
+import { Camera, Trash } from "phosphor-react";
 import html2canvas from 'html2canvas'
 import { useState } from "react";
 import { Loading } from "../Loading";
 
 // Criando uma interface para receber a função como prop
 interface ScreenshotButtonProps{
+    screenshot: string;
     onSreenShotTook: (screenshot: string) => void;
 }
 
-export function ScreenShotButton({onSreenShotTook}: ScreenshotButtonProps) {
+export function ScreenShotButton({onSreenShotTook, screenshot}: ScreenshotButtonProps) {
     const [isTakingScreenshot, setIsTakingScreenshot] = useState(false)
 
 
@@ -28,6 +29,26 @@ export function ScreenShotButton({onSreenShotTook}: ScreenshotButtonProps) {
 
         // Definir o state como false para desahabilitar o "loading"
         setIsTakingScreenshot(false)
+    }
+
+
+
+    // Fazendo uma verificação para saber se existe uma screenshot no state do componente pai
+    if (screenshot) {
+        // Caso exista, será renderizado na tela um botão com uma prévia da screen e um ícone para excluir
+        return(
+            <button
+                type="button"
+                className="p-1 w-10 h-10 rounded-m border-transparent flex justify-end items-end text-zinc-400 hover:text-zinc-100 transition-colors"
+                // Passando um objeto javascript para dentro
+                style={{
+                    // Passando a imagem que está armazenada dentro do state para ser renderizada no background 
+                    backgroundImage: `url(${screenshot})`
+                }}
+            >
+                <Trash weight="fill"/>
+            </button>
+        )
     }
 
     return (

@@ -42,7 +42,11 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested }
 
                 <footer className="flex gap-2 mt-2">
 
-                    <ScreenShotButton 
+                    <ScreenShotButton
+
+                    // Passando a screenshot, ou seja, após ter sido atualizado o state no componente filho
+                    screenshot={screenshot}
+
                     // Quando a screenshot for feita, chamar a função para atualizar o state
                         onSreenShotTook={setScreenshot}
                     />
