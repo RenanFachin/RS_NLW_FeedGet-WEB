@@ -57,6 +57,8 @@ export function WidgetForm() {
 
     // Criar uma função para reestartar o feedback (limpa o state para nulo novamente)
     function handleResetFeedback() {
+        setFeedbackSent(false)
+
         setFeedbackType(null)
     }
 
@@ -65,7 +67,9 @@ export function WidgetForm() {
 
             {/* Se o feedback já foi enviado, ou seja, seu valor alterou para true */}
             {feedbackSent ? (
-                <FeedbackSucessStep />
+                <FeedbackSucessStep
+                    onFeedbackRestartRequested={handleResetFeedback} 
+                />
             ) : (
                 <>
                     {!feedbackType ? (
