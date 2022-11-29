@@ -12,7 +12,7 @@ Este widget vai permitir que o usuário envie uma screenchot diretamente ao corp
 
 ## Funcionalidades
 - [x] Botão que abre um modal (Popover) com formulário
-- [x] Opção de enviar uma screenshot da tela junto ao formulário
+- [x] Opção de enviar uma screenshot da tela junto ao formulário. (Utilizando a lib html2canvas)
 - [x] Acessibilidade
 
 ## Instalação
