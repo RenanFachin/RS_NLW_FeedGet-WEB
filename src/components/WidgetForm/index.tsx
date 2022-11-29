@@ -5,6 +5,7 @@ import bugImageUrl from '../../assets/bug.svg'
 import ideaImageUrl from '../../assets/idea.svg'
 import thoughtImageUrl from '../../assets/thought.svg'
 import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
+import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
 
 // Criando um objeto com o(os) tipo(s) de feedback da aplicação
 export const feedbackTypes = {
@@ -49,22 +50,26 @@ export function WidgetForm(){
     // Passando o FeedbackType como tipagem para o estado, fazendo com que só seja possível 3 valores (bug, idea ou other) além do null
     const [feedbackType, setFeedbackType] = useState<FeedbackType | null>(null)
 
+    // Criar uma função para reestartar o feedback (limpa o state para nulo novamente)
+    function handleResetFeedback(){
+        setFeedbackType(null)
+    }
+
     return(
         <div className="bg-zinc-900 p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
 
-            <header>
-                <span className="text-xl leading-6">
-                    Deixe o seu feedback
-                </span>
-
-                <CloseButton />
-            </header>
-
             {!feedbackType ? (
                 // Enviando para o componente FeedbackTypeStep o state como parâmetro
-                <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType}/>
+                <FeedbackTypeStep 
+                onFeedbackTypeChanged={setFeedbackType}
+
+                />
             ) : (
-                <p>funcionando</p>
+                // Enviando para o contentStep qual foi o tipo de feedback que o usuário escolheu
+                <FeedbackContentStep 
+                feedbackType={feedbackType} 
+                onFeedbackRestartRequested={handleResetFeedback}
+                />
             )}
 
             <footer className="text-xs text-neutral-400">
