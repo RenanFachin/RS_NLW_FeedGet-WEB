@@ -40,6 +40,8 @@ Este widget vai permitir que o usuário envie uma screenchot diretamente ao corp
   - [ReactJS](https://reactjs.org/)
   - [TypeScript](https://www.typescriptlang.org/)
   - [Tailwind CSS](https://tailwindcss.com/)
+    - [Tailwind CSS/forms](https://github.com/tailwindlabs/tailwindcss-form)
+    - [Tailwind CSS/scrollbar](https://www.npmjs.com/package/tailwind-scrollbar)
   - [Phospor-react](https://www.npmjs.com/package/phosphor-react)
   - [Headlessui](https://headlessui.com/)
 
