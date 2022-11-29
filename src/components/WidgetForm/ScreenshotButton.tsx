@@ -3,7 +3,12 @@ import html2canvas from 'html2canvas'
 import { useState } from "react";
 import { Loading } from "../Loading";
 
-export function ScreenShotButton() {
+// Criando uma interface para receber a função como prop
+interface ScreenshotButtonProps{
+    onSreenShotTook: (screenshot: string) => void;
+}
+
+export function ScreenShotButton({onSreenShotTook}: ScreenshotButtonProps) {
     const [isTakingScreenshot, setIsTakingScreenshot] = useState(false)
 
 
@@ -17,6 +22,9 @@ export function ScreenShotButton() {
 
         // Convertendo para uma imagem png no formato base64 (formato de texto que representa uma imagem)
         const base64image = canvas.toDataURL('image/png')
+
+        // CHAMANDO A FUNÇÃO QUE IRÁ ATUALIZAR O ESTADO DO COMPONENTE PAI
+        onSreenShotTook(base64image)
 
         // Definir o state como false para desahabilitar o "loading"
         setIsTakingScreenshot(false)
