@@ -12,7 +12,8 @@ interface FeedbackContentStepProps{
 export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested }: FeedbackContentStepProps){
     
     // Criando um state para armazenar a screenshot recebida pelo componente
-    const [screenshot, setScreenshot] = useState<String | null >()
+    const [screenshot, setScreenshot] = useState<string | null>(null)
+
 
     const feedbackTypeInfo = feedbackTypes[feedbackType]
 

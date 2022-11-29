@@ -5,8 +5,8 @@ import { Loading } from "../Loading";
 
 // Criando uma interface para receber a função como prop
 interface ScreenshotButtonProps{
-    screenshot: string;
-    onSreenShotTook: (screenshot: string) => void;
+    screenshot: string | null;
+    onSreenShotTook: (screenshot: string | null) => void;
 }
 
 export function ScreenShotButton({onSreenShotTook, screenshot}: ScreenshotButtonProps) {
@@ -40,6 +40,7 @@ export function ScreenShotButton({onSreenShotTook, screenshot}: ScreenshotButton
             <button
                 type="button"
                 className="p-1 w-10 h-10 rounded-m border-transparent flex justify-end items-end text-zinc-400 hover:text-zinc-100 transition-colors"
+                onClick={() => {onSreenShotTook(null)}} 
                 // Passando um objeto javascript para dentro
                 style={{
                     // Passando a imagem que está armazenada dentro do state para ser renderizada no background 
