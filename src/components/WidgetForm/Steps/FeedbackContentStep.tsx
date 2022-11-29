@@ -5,11 +5,12 @@ import { CloseButton } from "../../CloseButton"
 import { ScreenShotButton } from "../ScreenshotButton";
 
 interface FeedbackContentStepProps{
-    feedbackType: FeedbackType
+    onFeedbackSent: () => void;
+    feedbackType: FeedbackType;
     onFeedbackRestartRequested: () => void;
 }
 
-export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested }: FeedbackContentStepProps){
+export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, onFeedbackSent }: FeedbackContentStepProps){
     
     // Criando um state para armazenar a screenshot recebida pelo componente
     const [screenshot, setScreenshot] = useState<string | null>(null)
@@ -21,6 +22,8 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested }
         event.preventDefault()
 
         console.log(screenshot, comment)
+
+        onFeedbackSent()
     }
 
 
