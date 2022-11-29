@@ -44,6 +44,7 @@ Este widget vai permitir que o usuário envie uma screenchot diretamente ao corp
     - [Tailwind CSS/scrollbar](https://www.npmjs.com/package/tailwind-scrollbar)
   - [Phospor-react](https://www.npmjs.com/package/phosphor-react)
   - [Headlessui](https://headlessui.com/)
+  - [html2canvas](https://www.npmjs.com/package/html2canvas)
 
 
 ## ✔️ Autores
