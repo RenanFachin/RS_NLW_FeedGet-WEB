@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { CloseButton } from "./CloseButton";
+import { CloseButton } from "../CloseButton";
 
-import bugImageUrl from '../assets/bug.svg'
-import ideaImageUrl from '../assets/idea.svg'
-import thoughtImageUrl from '../assets/thought.svg'
+import bugImageUrl from '../../assets/bug.svg'
+import ideaImageUrl from '../../assets/idea.svg'
+import thoughtImageUrl from '../../assets/thought.svg'
+import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
 
 // Criando um objeto com o(os) tipo(s) de feedback da aplicação
-const feedbackTypes = {
+export const feedbackTypes = {
     BUG: {
         title: 'Problema',
         image: {
@@ -42,7 +43,7 @@ const feedbackTypes = {
  */ 
 
 // Tipando apenas as "chaves" do objeto, fazendo que não seja possível selecionar um tipo diferente das chaves definidas no objeto
-type FeedbackType = keyof typeof feedbackTypes
+export type FeedbackType = keyof typeof feedbackTypes
 
 export function WidgetForm(){
     // Passando o FeedbackType como tipagem para o estado, fazendo com que só seja possível 3 valores (bug, idea ou other) além do null
@@ -60,30 +61,8 @@ export function WidgetForm(){
             </header>
 
             {!feedbackType ? (
-                <div className="flex py-8 gap-2 w-full">
-                {
-                    Object.entries(feedbackTypes).map(([key, value]) => {
-                        // [key, value] é a desestruturação do "item"
-                        return (
-                            <button 
-                                key={key}
-                                type="button"
-                                onClick={() => setFeedbackType(key as FeedbackType)}
-                                className="bg-zinc-800 rounded-lg py-5 w-24 flex-1 flex flex-col items-center gap-2 border-2 border-transparent hover:border-brand-500 focus:border-brand-500 focus:outline-none"
-                            >
-                                <img 
-                                src={value.image.source} 
-                                alt={value.image.alt} 
-                                />
-
-                                <span>
-                                    {value.title}
-                                </span>
-                            </button>
-                        )
-                    })
-                }
-            </div>
+                // Enviando para o componente FeedbackTypeStep o state como parâmetro
+                <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType}/>
             ) : (
                 <p>funcionando</p>
             )}
